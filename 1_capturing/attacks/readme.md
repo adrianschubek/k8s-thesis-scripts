@@ -14,7 +14,7 @@
 ## Guide
 
 1. Download `attacks.sh` from this repo to Desktop
-2. Run in host erminal
+2. Run in host terminal
 ```bash
 cd ~/Desktop && bash attacks.sh --config ~/Desktop/capture.env --scenarios_download --only 01 --prepare-only
 ```
