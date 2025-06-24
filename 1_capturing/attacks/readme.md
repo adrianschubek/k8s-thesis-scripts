@@ -61,6 +61,7 @@ cd ~/Desktop && bash <(curl -fsSL https://k8s.adriansoftware.de/attacks/run_atta
 3. Start capturing by pressing any key on the first terminal (quickly after step 2)
 4. **wait** for step 2. to be completed
 
+> If you dont want to bash curl the scripts, you can just download them from this repo and replace the <(curl..)> part with `bash run_attacker.sh`...
 
 ---
 
