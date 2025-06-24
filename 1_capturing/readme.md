@@ -5,7 +5,11 @@
 ```bash
 kubeadm token create --print-join-command
 ```
-2. Create new VM in virtual-machine-manager with Ubuntu 24.04 Server LTS image.
+2. Create new VM in virtual-machine-manager with Ubuntu 24.04 Server LTS image. Start the VM and follow the setup. You must set the following:
+    - username: `k8s`
+    - password: `k8s`
+    - hostname: `k8s-worker-X` where `X` is the number of the worker node (e.g. `k8s-worker-3`)
+    - additional packages: `OpenSSH server`
 3. Open new terminal. Login on the new VM and run: Select worker option when prompted.
 ```bash
 bash <(curl -fsSL https://k8s.adriansoftware.de/k8s.sh)
