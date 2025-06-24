@@ -17,13 +17,15 @@ bash <(curl -fsSL https://k8s.adriansoftware.de/k8s.sh)
 WORKER3_IP="192.168.122.228" # set IP of VM
 WORKER3_VM="k8s-worker-3" # set VM name
 ```
-7. Edit `prepare_env.sh`, `start_capture.sh` and `end_capture.sh` and add the new env `WORKER3_IP` everywhere where the existing `WORKER1_IP` and `WORKER2_IP` variables are used. Same with `WORKER3_VM`. Example:
+7. Edit `prepare_env.sh`, `start_capture.sh` and `end_capture.sh` and add the new env `WORKER3_IP` everywhere where the existing `WORKER1_IP` and `WORKER2_IP` variables are used. Example:
 ```diff
 -for NODE in $MASTER_IP $WORKER1_IP $WORKER2_IP; do
 +for NODE in $MASTER_IP $WORKER1_IP $WORKER2_IP $WORKER3_IP; do
 ```
+8. Do step 7 with `WORKER3_VM` in the same files.
 
-8. In `end_capture.sh` add to the `copy_data_to_host()` function:
+
+9. In `end_capture.sh` add to the `copy_data_to_host()` function:
 ```diff
 copy_data_to_host() {
   mkdir -p $HOST_DIR/$FOLDER
