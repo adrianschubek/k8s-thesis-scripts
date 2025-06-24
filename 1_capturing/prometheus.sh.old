@@ -1,0 +1,60 @@
+#!/bin/bash
+# https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack#kube-prometheus-stack
+# echo colors
+CYAN='\033[0;36m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+RED='\033[0;31m'
+GREEN_BG_BLACK_TEXT='\033[42;30m'
+NC='\033[0m' # reset
+
+log_step() {
+    echo -e "${CYAN}[ $((step++))/$total_steps ] $1${NC}"
+}
+log_step_ok() {
+    echo -e "${GREEN}[ $((step++))/$total_steps ] $1${NC}"
+}
+log_step_error() {
+    echo -e "${RED}[ $((step++))/$total_steps ] $1${NC}"
+}
+log_info() {
+    echo -e "${CYAN}[ i ] $1${NC}"
+}
+log_error() {
+    echo -e "${RED}[ ! ] $1${NC}"
+}
+log_question() {
+    echo -e "${YELLOW}[ ? ] $1${NC}"
+}
+
+echo -e "${GREEN_BG_BLACK_TEXT} Prometheus setup v0.1 by Adrian Schubek${NC}"
+
+step=1
+total_steps=4
+
+
+log_question "Run dashboard [r] or install kube-prometheus-stack [i]"
+read type
+if [ "$type" != "i" ] && [ "$type" != "r" ]; then
+    log_error "Invalid type"
+    exit 1
+fi
+
+if [ "$type" = "i" ]; then
+  log_info "Installing kube-prometheus-stack"
+
+  log_step "Install helm"
+  sudo snap install helm --classic
+
+  log_step "Add prometheus-community repo"
+  helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+  helm repo update
+
+  log_step "Install kube-prometheus-stack"
+  helm install kube-prometheus-stack prometheus-community/kube-prometheus-stack
+#    --set nodeSelector."beta\.kubernetes\.io/os"=linux #FIXME https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/
+
+  log_step_ok "kube-prometheus-stack installed"
+elif [ "$type" = "r" ]; then
+
+fi

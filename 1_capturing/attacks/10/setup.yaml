@@ -1,0 +1,82 @@
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: default-storageclass
+  annotations:
+    storageclass.kubernetes.io/is-default-class: "true"
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: kuma-data-pv
+spec:
+  storageClassName: default-storageclass
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/uptimekuma-pv"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: kuma-data-pv
+spec:
+  storageClassName: default-storageclass
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: uptime-kuma-service
+spec:
+  selector:
+    app: uptime-kuma
+  ports:
+    - name: uptime-kuma
+      port: 3001
+      nodePort: 32711
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: uptime-kuma
+spec:
+  selector:
+    matchLabels:
+      app: uptime-kuma
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: uptime-kuma
+    spec:
+      containers:
+      - name: uptime-kuma
+        image: louislam/uptime-kuma:1.23.0
+        ports:
+        - containerPort: 3001
+        volumeMounts:
+        - name: uptime-kuma-pv
+          mountPath: /app/data
+      volumes:
+      - name: uptime-kuma-pv
+        persistentVolumeClaim:
+          claimName: kuma-data-pv
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: "kubernetes.io/hostname"
+                    operator: In
+                    values:
+                      - "k8s-worker-1"

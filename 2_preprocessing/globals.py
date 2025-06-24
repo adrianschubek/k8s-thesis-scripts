@@ -1,0 +1,1 @@
+RESOLUTION = "1s"

@@ -1,0 +1,1 @@
+python3 exploit4.py -u $SCENARIO_CONFIG_1 -i $SCENARIO_CONFIG_2

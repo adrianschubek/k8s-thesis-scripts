@@ -1,0 +1,87 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apache-frontend
+  labels:
+    app: apache-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apache-frontend
+  template:
+    metadata:
+      labels:
+        app: apache-frontend
+    spec:
+      containers:
+        - name: apache-frontend
+          image: adrianschubek/apache-frontend:latest
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: "kubernetes.io/hostname"
+                    operator: In
+                    values:
+                      - "k8s-worker-1"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: apache-frontend
+  labels:
+    app: apache-frontend
+spec:
+  type: NodePort
+  selector:
+    app: apache-frontend
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 31002
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apache-backend
+  labels:
+    app: apache-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apache-backend
+  template:
+    metadata:
+      labels:
+        app: apache-backend
+    spec:
+      containers:
+        - name: apache-backend
+          image: adrianschubek/apache-backend:latest
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: "kubernetes.io/hostname"
+                    operator: In
+                    values:
+                      - "k8s-worker-1"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: apache-backend
+  labels:
+    app: apache-backend
+spec:
+  type: NodePort
+  selector:
+    app: apache-backend
+  ports:
+    - port: 8080
+      targetPort: 8080
+      nodePort: 31003

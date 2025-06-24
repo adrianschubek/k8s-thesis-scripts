@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fluent-bit
+  labels:
+    app: fluent-bit
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fluent-bit
+  template:
+    metadata:
+      labels:
+        app: fluent-bit
+    spec:
+      containers:
+        - name: fluent-bit
+          image: cr.fluentbit.io/fluent/fluent-bit:2.2.0
+          args:
+            - "-i"
+            - "http"
+            - "-p"
+            - "port=8888"
+            - "-o"
+            - "stdout"
+          ports:
+            - containerPort: 8888
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: "kubernetes.io/hostname"
+                    operator: In
+                    values:
+                      - "k8s-worker-2"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fluent-bit-service
+spec:
+  selector:
+    app: fluent-bit
+  ports:
+    - protocol: TCP
+      port: 8888
+      targetPort: 8888
+      nodePort: 30888
+  type: NodePort

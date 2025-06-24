@@ -1,0 +1,52 @@
+tap:
+  stopped: false # for headless: always record without dashboard, default was true (bc dashboard)
+  packetCapture: ebpf
+  storageLimit: 8Gi
+  misc:
+    jsonTTL: 15m
+    pcapTTL: 5s
+  enabledDissectors:
+    - udp
+    - tls
+    - amqp
+    - dns
+    - http
+    - icmp
+    - kafka
+    - redis
+    - sctp
+    - syscall
+    - tcp
+    - ws
+  excludedNamespaces:
+    - kubeshark
+    - prom
+  resources:
+    hub:
+      limits:
+        cpu: 750m
+        memory: 1Gi
+      requests:
+        cpu: 50m
+        memory: 50Mi
+    sniffer:
+      limits:
+        cpu: 750m
+        memory: 1Gi
+      requests:
+        cpu: 50m
+        memory: 50Mi
+    tracer:
+      limits:
+        cpu: 750m
+        memory: 1Gi
+      requests:
+        cpu: 50m
+        memory: 50Mi
+pcapdump:
+  enabled: false
+  maxTime: 1h
+  maxSize: 500MB
+scripting:
+  source: /home/k8s/ks-scripts
+headless: true
