@@ -90,21 +90,23 @@ preprocessing/
 
 Run the script to generate the dataset
 
-> If using a large benign traffic you should skip it and run the dataset generation script twice. 1. for all attacks and 2. for the benign traffic. Use `--skip benign_folder_name` to skip the benign traffic. Only process the benign traffic AFTER you selected the features in step 6 using the attacks dataset!
+<!-- > If using a large benign traffic you should skip it and run the dataset generation script twice. 1. for all attacks and 2. for the benign traffic. Use `--skip benign_folder_name` to skip the benign traffic. Only process the benign traffic AFTER you selected the features in step 6 using the attacks dataset! -->
+
+> Set the `--resolution` option to `Xs`/`Xms` e.g `1s` for 1 second resolution or `10ms` for 10 milliseconds resolution. As an example we use 1 second.
 
 ```bash
-python dataset.py --input raw_data --output datasets
+python dataset.py --input raw_data --output datasets --resolution 1s
 ```
 
 (Linux & Nvidia only) cuDF version (recommended)
 
 ```bash
-python -m cudf.pandas dataset.py --input raw_data --output datasets
+python -m cudf.pandas dataset.py --input raw_data --output datasets --resolution 1s
 ```
 
 You can also use a full absolute path for both input and output folders.
 
-#### Options
+<!-- #### More options
 
 ##### Skips a scenario
 
@@ -122,15 +124,15 @@ You can also use a full absolute path for both input and output folders.
 
 ```
 --format <csv|parquet|xlsx|json>
-```
+``` -->
 
 <!-- export CUDF_COPY_ON_WRITE="1" &&  -->
 
 #### Output files
 
-`<scenario>` is the name of the scenario, e.g. `attack0`
+`<scenario>` is the name of the first scenario, e.g. `attack0`
 
-> Note: There will be just a single folder with the name of the first scenario for everything. This is expected and the correct labels will be set later.
+> Note: There will just be a *single* folder with the name of the first scenario for everything. This is expected and the correct labels will be set later. So `attack1...` actually includes all scenarios.
 
 `<node>` is the name of the node, e.g. `k8s-master-1`
 
@@ -183,10 +185,11 @@ After processing, the dataset files will be saved as `dataset.csv` in each scena
 
 ### 6) Feature Engineering
 
-> Only for attack scenario dataset. Skip for benign dataset. After this step you can create the benign dataset in step 4.
+<!-- > Only for attack scenario dataset. Skip for benign dataset. After this step you can create the benign dataset in step 4. -->
+> Remove `-m cudf.pandas` if you are not using cuDF.
 
 ```bash
-python -m cudf.pandas featureselection.py --input datasets/all_datasets.csv --output datasets
+python -m cudf.pandas featureselection.py --input datasets/attack1-XXXX/dataset.csv --output datasets
 ```
 
 Final optimized dataset will be saved as `all_datasets_rf.csv` in the `datasets` folder.
@@ -203,8 +206,10 @@ Intermediate files are saved as `all_datasets_*.csv` and `selected_columns_*.csv
 ### 6) Apply labels
 
 ```bash
-python -m cudf.pandas applylabelsv5.py --dataset datasets/attack1-XXXX/dataset.csv --timing raw_data/timing_1it.txt --resolution 10ms --between-as-benign true
+python -m cudf.pandas applylabelsv5.py --dataset datasets/attack1-XXXX/dataset.csv --timing raw_data/timing_1it.txt --resolution 1s --between-as-benign true
 ```
+
+Replace `attack1-XXXX` with the actual folder name. Will create a new file `dataset_labeled.csv` in the same folder
 
 <!-- ```bash
 python -m cudf.pandas splitdataset.py --dataset local_datasets_v5it3ms10/attack1-2025-03-27_22-32-47/dataset_labeled.csv --output local_datasets_v5it3ms10 --split-by-benign true
@@ -214,8 +219,10 @@ python -m cudf.pandas splitdataset.py --dataset local_datasets_v5it3ms10/attack1
 
 <!-- python -m cudf.pandas network2.py --rawdata raw_data_v2 --input local_datasets_v2/all_datasets_rf.csv --output local_datasets_v2 -->
 ```bash
-python -m cudf.pandas network2.py --rawdata raw_data_v5it3 --input local_datasets_v5it3ms10/attack1-2025-03-27_22-32-47/dataset_labeled.csv --output local_datasets_v5it3ms10 --workers 1
+python -m cudf.pandas network2.py --rawdata raw_data --input datasets/attack1-XXXX/dataset_labeled.csv --scenario attack1-XXXX --output datasets --workers 1
 ```
+
+Replace `attack1-XXXX` with the actual folder name
 
 ### 8) Machine Learning
 
