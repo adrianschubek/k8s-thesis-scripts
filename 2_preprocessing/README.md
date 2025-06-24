@@ -37,6 +37,7 @@ uv pip install -r requirements.txt
 
 Install PyTorch https://pytorch.org/get-started/locally/
 
+Example for Nvidia GPUs:
 ```bash
 uv pip install -U torch --index-url https://download.pytorch.org/whl/cu126
 ```
@@ -56,13 +57,14 @@ Create a new `raw_data` folder under `preprocessing` on your workstation.
 mkdir raw_data && cd raw_data 
 ```
 
-Transfer all created `.7z` files from the host PC to `raw_data` on your work PC. (using e.g. USB stick, RustDesk...)
+Transfer the created `.7z` files from the host PC to `raw_data` on your work PC. (using e.g. USB stick, RustDesk...)
 >Needs at least 32GB RAM + SWAP (Max RAM+SWAP usage ~95GB for 15mins of data). Trying to do this on the host PC will likely result in an OOM error.
 
-And extract all `.7z` files in the `raw_data` folder.
+And extract the `.7z` files in the `raw_data` folder.
 ```bash
-for file in *.7z; do 7z x "$file"; done
+7z x <filename>
 ```
+<!-- for file in *.7z; do 7z x "$file"; done -->
 
 
 ### 4)
