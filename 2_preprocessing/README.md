@@ -58,7 +58,7 @@ mkdir raw_data && cd raw_data
 ```
 
 Transfer the created `.7z` files from the host PC to `raw_data` on your work PC. (using e.g. USB stick, RustDesk...)
->Needs at least 32GB RAM + SWAP (Max RAM+SWAP usage ~95GB for 15mins of data). Trying to do this on the host PC will likely result in an OOM error.
+> Preprocessing needs at least 32GB RAM + SWAP (Max RAM+SWAP usage ~95GB for 15mins of data). Trying to do this on the host PC will likely result in an OOM error.
 
 And extract the `.7z` files in the `raw_data` folder.
 ```bash
