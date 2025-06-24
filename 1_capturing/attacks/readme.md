@@ -68,7 +68,7 @@ ATTACK=1
 ```bash
 cd ~/Desktop && bash attacks.sh --config ~/Desktop/capture.env --scenarios_download --only 01 --manual
 ```
-2. **wait** for ready then run in new terminal: (iterations = how many times each attack is run)
+2. **wait** for ready status. then run in new terminal: (iterations = how many times each attack is run)
 ```bash
 cd ~/Desktop && bash run_attacker.sh --config ~/Desktop/capture.env --scenarios_download --iterations 1 --timing timing_1it.txt
 ```
