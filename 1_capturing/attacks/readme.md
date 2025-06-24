@@ -62,16 +62,17 @@ ATTACK=1
 >```
 > and remove the `--scenarios_download` option.
 
-> If you dont want to execute the scripts from the server, you can just download them from this repo and replace the <(curl..)> part with `bash run_attacker.sh`...
+<!-- > If you dont want to execute the scripts from the server, you can just download them from this repo and replace the <(curl..)> part with `bash run_attacker.sh`... -->
 
-<!-- > Attack 02 and 04 may require manual changes to run_host.sh (02) and capture.env (04) to work properly!! -->
+0. Download and move the `attacks.sh` and `run_attacker.sh` scripts to your Desktop from this repo
 1. Start new terminal and run on host pc:
 ```bash
-cd ~/Desktop && bash <(curl -fsSL https://k8s.adriansoftware.de/attacks/attacks.sh) --config ~/Desktop/capture.env --scenarios_download --only 01 --manual
+```bash
+cd ~/Desktop && bash attacks.sh --config ~/Desktop/capture.env --scenarios_download --only 01 --manual
 ```
 2. **wait** for ready then run in new terminal: (iteration = how many times each attack is run)
 ```bash
-cd ~/Desktop && bash <(curl -fsSL https://k8s.adriansoftware.de/attacks/run_attacker.sh) --config ~/Desktop/capture.env --scenarios_download --iterations 1 --timing timing_1it.txt
+cd ~/Desktop && bash run_attacker.sh --config ~/Desktop/capture.env --scenarios_download --iterations 1 --timing timing_1it.txt
 ```
 3. Start capturing by pressing any key on the first terminal (*immediately* after step 2)
 4. **wait** for step 2. to be completed
