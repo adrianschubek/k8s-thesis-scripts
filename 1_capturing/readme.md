@@ -6,7 +6,7 @@
 kubeadm token create --print-join-command
 ```
 2. Create new VM in virtual-machine-manager with Ubuntu 24.04 Server LTS image.
-3. Login on the new VM and run: Select worker option when prompted.
+3. Open new terminal. Login on the new VM and run: Select worker option when prompted.
 ```bash
 bash <(curl -fsSL https://k8s.adriansoftware.de/k8s.sh)
 ```
