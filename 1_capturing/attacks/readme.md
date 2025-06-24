@@ -12,8 +12,7 @@
 
 ```bash
 <scenario_id>
-   |--- run.sh
-   |--- run_host.sh (alternative for run.sh. runs on host instead of master)
+   |--- run_host.sh (runs on the host PC/outside the cluster)
    |--- capture.env (optional)
 ```
 

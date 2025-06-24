@@ -14,10 +14,10 @@ The `sampled` versions are sampled from the original dataset where the benign tr
 
 ### 1)
 
-Clone https://github.com/adrianschubek/k8s-thesis/tree/main/preprocessing
+Clone https://github.com/adrianschubek/k8s-thesis-scripts
 
 ```bash
-git clone git@github.com:adrianschubek/k8s-thesis.git && cd k8s-thesis/1_preprocessing
+git clone https://github.com/adrianschubek/k8s-thesis-scripts && cd k8s-thesis/1_preprocessing
 ```
 
 ### 2)
@@ -215,6 +215,8 @@ python -m cudf.pandas network2.py --rawdata raw_data_v5it3 --input local_dataset
 ```
 
 ### 8) Machine Learning
+
+> You can skip this step if you want to use your own machine learning models instead.
 
 Note: "Pod_Logs" column contains the raw logs as string. So you need to use something like tf-idf to convert it to a numerical representation before using it in a model.
 
