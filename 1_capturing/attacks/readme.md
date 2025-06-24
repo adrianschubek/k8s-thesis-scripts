@@ -21,9 +21,8 @@
 
 ## Configuration
 
+### Global `capture.env` example
 > File already exists on `~/Desktop/capture.env`. Skip this step
-
-Global `capture.env` example
 
 ```bash
 MASTER_IP="192.168.122.216" # control plane node
