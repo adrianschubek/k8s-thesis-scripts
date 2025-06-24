@@ -22,6 +22,21 @@ WORKER3_VM="k8s-worker-3" # set VM name
 -for NODE in $MASTER_IP $WORKER1_IP $WORKER2_IP; do
 +for NODE in $MASTER_IP $WORKER1_IP $WORKER2_IP $WORKER3_IP; do
 ```
+
+8. In `end_capture.sh` add to the `copy_data_to_host()` function:
+```diff
+copy_data_to_host() {
+  mkdir -p $HOST_DIR/$FOLDER
+  echo_b "Copying data from $MASTER_VM to host..."
+  sshpass -p "$SSH_PASSWD" rsync -avz --exclude=".*" --exclude="node_modules" --exclude="ks*" --exclude="snap" --exclude="10" --exclude="*.py" -e "ssh -o StrictHostKeyChecking=no" $SSH_USER@$MASTER_IP:/home/$SSH_USER/ $HOST_DIR/$FOLDER/$MASTER_VM
+  echo_b "Copying data from $WORKER1_VM to host..."
+  sshpass -p "$SSH_PASSWD" rsync -avz --exclude=".*" --exclude="node_modules" --exclude="ks*" --exclude="snap" -e "ssh -o StrictHostKeyChecking=no" $SSH_USER@$WORKER1_IP:/home/$SSH_USER/ $HOST_DIR/$FOLDER/$WORKER1_VM
+  echo_b "Copying data from $WORKER2_VM to host..."
+  sshpass -p "$SSH_PASSWD" rsync -avz --exclude=".*" --exclude="node_modules" --exclude="ks*" --exclude="snap" -e "ssh -o StrictHostKeyChecking=no" $SSH_USER@$WORKER2_IP:/home/$SSH_USER/ $HOST_DIR/$FOLDER/$WORKER2_VM
++  echo_b "Copying data from $WORKER3_VM to host..."
++  sshpass -p "$SSH_PASSWD" rsync -avz --exclude=".*" --exclude="node_modules" --exclude="ks*" --exclude="snap" -e "ssh -o StrictHostKeyChecking=no" $SSH_USER@$WORKER3_IP:/home/$SSH_USER/ $HOST_DIR/$FOLDER/$WORKER3_VM
+}
+```
 ---
 # Cluster init
 > This is already done.
