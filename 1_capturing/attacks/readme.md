@@ -49,7 +49,7 @@ ATTACK=1
 # Scenario specific configuration (modify as required)...
 ```
 
-> `ATTACK_ID` is used to identify the attack in the dataset. They should be unique for each scenario. 
+> `ATTACK_ID` is used to identify the attack in the dataset. They should be unique for each scenario. Format is `attackX` where X is the attack number (e.g. `attack1`, `attack2`, etc.).
 
 > `ATTACK` can be either 1 (for malicious) or 0 (for benign). If you want to run a benign scenario, set `ATTACK=0` and `ATTACK_ID` to something like `benignX` where X is the benign scenario number.
 
