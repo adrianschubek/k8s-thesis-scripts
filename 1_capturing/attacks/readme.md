@@ -49,7 +49,7 @@ ATTACK=1
 
 ## Automated attack execution and capture
 
-> The following commands download the 10 existing scenarios. If you have modified or added new scenarios you must use set a folder path instead 
+> The following commands download the 10 existing scenarios. If you have modified or added new scenarios you must set a local folder path instead 
 >```bash 
 >--scenarios /path/to/scenarios
 >```
