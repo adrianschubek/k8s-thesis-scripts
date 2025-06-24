@@ -51,15 +51,20 @@ uv pip install --prerelease=allow --index-strategy unsafe-best-match \
 
 ### 3)
 
-Copy all created `.7z` files from the host PC to your work PC. Needs at least 32GB RAM + SWAP (Max RAM+SWAP usage ~95GB for 15mins of data).
-
-Create a new `raw_data` folder under `preprocessing`, move all `.7z` files into it and extract them.
+Create a new `raw_data` folder under `preprocessing` on your workstation.
 ```bash
-mkdir raw_data && cd raw_data && for file in *.7z; do 7z x "$file"; done
+mkdir raw_data && cd raw_data 
+```
+
+Transfer all created `.7z` files from the host PC to `raw_data` your work PC. (using e.g. USB stick, RustDesk...)
+>Needs at least 32GB RAM + SWAP (Max RAM+SWAP usage ~95GB for 15mins of data). Trying to do this on the host PC will likely result in an OOM error.
+
+```bash
+for file in *.7z; do 7z x "$file"; done
 ```
 
 <details>
-<summary>Alternative: using existing captured data</summary>
+<summary>Example using existing captured data</summary>
 
 
 > If you use an existing dataset (https://github.com/adrianschubek/k8s-thesis/tree/main/scripts/datasets) you can skip to **[step 7 ML](#7-machine-learning)**.
