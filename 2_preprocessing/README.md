@@ -199,7 +199,7 @@ Intermediate files are saved as `all_datasets_*.csv` and `selected_columns_*.csv
 ### 6) Apply labels
 
 ```bash
-python -m cudf.pandas applylabelsv5.py --dataset local_datasets_v5it3ms10/attack1-2025-03-27_22-32-47/dataset.csv --timing raw_data/timing_1it.txt --resolution 10ms
+python -m cudf.pandas applylabelsv5.py --dataset datasets/attack1-2025-03-27_22-32-47/dataset.csv --timing raw_data/timing_1it.txt --resolution 10ms
 ```
 
 <!-- ```bash
