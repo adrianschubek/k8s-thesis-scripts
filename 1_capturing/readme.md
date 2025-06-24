@@ -1,6 +1,6 @@
 
 ---
-## To add a new node:
+# Add a new node:
 1. Login on the **master** node and run:
 ```bash
 kubeadm token create --print-join-command
@@ -11,6 +11,17 @@ kubeadm token create --print-join-command
 bash <(curl -fsSL https://k8s.adriansoftware.de/k8s.sh)
 ```
 4. Run the command from step 1 on the new VM to join it to the cluster.
+5. Modify the capture scripts: Make sure you download all `*.sh` scripts to Desktop from this repo https://github.com/adrianschubek/k8s-thesis-scripts/tree/main/1_capturing/attacks
+6. In `attacks.sh` and `run_attacker.sh` add new env variables for the new node:
+```bash
+WORKER3_IP="192.168.122.228" # set IP of VM
+WORKER3_VM="k8s-worker-3" # set VM name
+```
+7. Edit `prepare_env.sh`, `start_capture.sh` and `end_capture.sh` and add the new env `WORKER3_IP` everywhere where the existing `WORKER1_IP` and `WORKER2_IP` variables are used. Same with `WORKER3_VM`. Example:
+```diff
+-for NODE in $MASTER_IP $WORKER1_IP $WORKER2_IP; do
++for NODE in $MASTER_IP $WORKER1_IP $WORKER2_IP $WORKER3_IP; do
+```
 ---
 # Cluster init
 > This is already done.
