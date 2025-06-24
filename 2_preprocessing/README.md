@@ -222,7 +222,7 @@ python -m cudf.pandas splitdataset.py --dataset local_datasets_v5it3ms10/attack1
 python -m cudf.pandas network2.py --rawdata raw_data --input datasets/attack1-XXXX/dataset_labeled.csv --scenario attack1-XXXX --output datasets --workers 1
 ```
 
-Replace `attack1-XXXX` with the actual folder name
+Replace `attack1-XXXX` with the actual folder name. Input file is `dataset_labeled.csv` from the previous step.
 
 ### 8) Machine Learning
 
