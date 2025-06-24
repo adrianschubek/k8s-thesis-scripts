@@ -49,6 +49,14 @@ ATTACK=1
 
 ## Automated attack execution and capture
 
+> The following commands download the 10 existing scenarios. If you have modified or added new scenarios you must use set a folder path instead 
+>```bash 
+>--scenarios /path/to/scenarios
+>```
+> and remove the `--scenarios_download` option.
+
+> If you dont want to execute the scripts from the server, you can just download them from this repo and replace the <(curl..)> part with `bash run_attacker.sh`...
+
 <!-- > Attack 02 and 04 may require manual changes to run_host.sh (02) and capture.env (04) to work properly!! -->
 1. Start new terminal and run on host pc:
 ```bash
@@ -61,7 +69,7 @@ cd ~/Desktop && bash <(curl -fsSL https://k8s.adriansoftware.de/attacks/run_atta
 3. Start capturing by pressing any key on the first terminal (quickly after step 2)
 4. **wait** for step 2. to be completed
 
-> If you dont want to bash curl the scripts, you can just download them from this repo and replace the <(curl..)> part with `bash run_attacker.sh`...
+
 
 ---
 
