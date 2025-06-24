@@ -8,7 +8,7 @@
 
 4. [Capture](#automated-attack-execution-and-capture) the data. -->
 
-# Create new scenarios
+# Modify the cluster (create/delete scenarios/pods...)
 > Example scenario https://github.com/adrianschubek/k8s-thesis-scripts/tree/main/1_capturing/attacks/01
 
 ## Guide
