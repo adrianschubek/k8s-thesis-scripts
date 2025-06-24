@@ -1,4 +1,4 @@
-## Guide
+<!-- ## Guide
 
 1. Setup the [Kubernetes cluster](https://k8s.adriansoftware.de/)
 
@@ -6,7 +6,10 @@
 
 3. Shutdown all VMs and create a new snapshot in virt-manager. Use version numbers e.g. `v2` for the snapshots.
 
-4. [Capture](#automated-attack-execution-and-capture) the data.
+4. [Capture](#automated-attack-execution-and-capture) the data. -->
+
+# Create new scenarios
+> Example scenario https://github.com/adrianschubek/k8s-thesis-scripts/tree/main/1_capturing/attacks/01
 
 ## Scenario folder structure
 
@@ -18,7 +21,7 @@
 
 ## Configuration
 
-> File already exists on `~/Desktop/capture.env`.
+> File already exists on `~/Desktop/capture.env`. Skip this step
 
 Global `capture.env` example
 
@@ -37,7 +40,7 @@ WORKER2_VM="k8s-worker-2"
 
 ### Scenario specific configuration inside each scenario folder
 
-**Note: Check each scenario `capture.env` and modify it as requried by the scenario `readme.md`.**
+<!-- **Note: Check each scenario `capture.env` and modify it as requried by the scenario `readme.md`.** -->
 
 `<scenario_id>/capture.env`
 
@@ -47,7 +50,11 @@ ATTACK=1
 # Scenario specific configuration (modify as required)...
 ```
 
-## Automated attack execution and capture
+> `ATTACK_ID` is used to identify the attack in the dataset. They should be unique for each scenario. 
+
+> `ATTACK` can be either 1 (for malicious) or 0 (for benign). If you want to run a benign scenario, set `ATTACK=0` and `ATTACK_ID` to something like `benignX` where X is the benign scenario number.
+
+# Automated attack execution and capture
 
 > The following commands download the 10 existing scenarios. If you have modified or added new scenarios you must set a local folder path instead 
 >```bash 
