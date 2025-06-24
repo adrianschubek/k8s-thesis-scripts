@@ -18,6 +18,8 @@
 
 ## Configuration
 
+> File already exists on `~/Desktop/capture.env`.
+
 Global `capture.env` example
 
 ```bash
@@ -47,31 +49,18 @@ ATTACK=1
 
 ## Automated attack execution and capture
 
-> Attack 02 and 04 may require manual changes to run_host.sh (02) and capture.env (04) to work properly!!
-
-### Dataset < v4: Option 1: Auto download latest scenarios
-
-
-```bash
-cd ~/Desktop && bash <(curl -fsSL https://k8s.adriansoftware.de/attacks/attacks.sh) --config ~/Desktop/capture.env --scenarios_download
-```
-
-### Dataset < v4: Option 2: use local scenarios folder
-
-Download `prepare_env.sh` `start_capture.sh` and `end_capture.sh`.
-
-```bash
-cd ~/Desktop && bash <(curl -fsSL https://k8s.adriansoftware.de/attacks/attacks.sh) --config ~/Desktop/capture.env --scenarios /path/to/scenarios --only 01
-```
-
-### Dataset v5+
+<!-- > Attack 02 and 04 may require manual changes to run_host.sh (02) and capture.env (04) to work properly!! -->
+1. Start new terminal and run on host pc:
 ```bash
 cd ~/Desktop && bash <(curl -fsSL https://k8s.adriansoftware.de/attacks/attacks.sh) --config ~/Desktop/capture.env --scenarios_download --only 01 --manual
 ```
-wwait for ready then for 1iteration (iteration = how many times each attack is run) other terminal
+2. **wait** for ready then run in new terminal: (iteration = how many times each attack is run)
 ```bash
 cd ~/Desktop && bash <(curl -fsSL https://k8s.adriansoftware.de/attacks/run_attacker.sh) --config ~/Desktop/capture.env --scenarios_download --iterations 1 --timing timing_1it.txt
 ```
+3. Start capturing by pressing any key on the first terminal (quickly after step 2)
+4. **wait** for step 2. to be completed
+
 
 ---
 
