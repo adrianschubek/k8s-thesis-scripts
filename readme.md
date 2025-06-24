@@ -7,12 +7,12 @@
 
 > See README.md in 1_capturing and 2_preprocessing for more info.
 
-### How to init the cluster or add new nodes?
+### How to init the cluster or add new nodes
 https://github.com/adrianschubek/k8s-thesis-scripts/blob/main/1_capturing/readme.md
 
-### How to preprocess the raw data into a dataset?
+### How to preprocess the raw data into a dataset
 https://github.com/adrianschubek/k8s-thesis-scripts/blob/main/2_preprocessing/README.md
 
-### How to create/modify/delete scenarios?
+### How to create/modify/delete scenarios
 https://github.com/adrianschubek/k8s-thesis-scripts/blob/main/1_capturing/attacks/readme.md
 
