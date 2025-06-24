@@ -15,7 +15,7 @@
 
 ```bash
 <scenario_id>
-   |--- run_host.sh (runs on the host PC/outside the cluster)
+   |--- run_host.sh (runs on the host PC/outside the cluster/"attack script")
    |--- capture.env (configuration for the scenario)
 ```
 
