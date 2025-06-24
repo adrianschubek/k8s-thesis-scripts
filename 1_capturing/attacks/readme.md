@@ -13,7 +13,7 @@
 
 ## Guide
 
-1. Download all `*.sh` scripts to your Desktop from this repo
+1. Download all `*.sh` scripts to your Desktop from this repo https://github.com/adrianschubek/k8s-thesis-scripts/tree/main/1_capturing/attacks
 2. Run in host terminal
 ```bash
 cd ~/Desktop && bash attacks.sh --config ~/Desktop/capture.env --scenarios_download --only 01 --prepare-only
@@ -77,7 +77,7 @@ ATTACK=1
 
 <!-- > If you dont want to execute the scripts from the server, you can just download them from this repo and replace the <(curl..)> part with `bash run_attacker.sh`... -->
 
-0. Download all `*.sh` scripts to your Desktop from this repo
+0. Download all `*.sh` scripts to your Desktop from this repo https://github.com/adrianschubek/k8s-thesis-scripts/tree/main/1_capturing/attacks
 1. Start new terminal and run on host pc:
 ```bash
 cd ~/Desktop && bash attacks.sh --config ~/Desktop/capture.env --scenarios_download --only 01 --manual
