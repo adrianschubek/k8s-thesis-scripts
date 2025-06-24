@@ -189,7 +189,7 @@ After processing, the dataset files will be saved as `dataset.csv` in each scena
 > Remove `-m cudf.pandas` if you are not using cuDF.
 
 ```bash
-python -m cudf.pandas featureselection.py --input datasets/attack1-XXXX/dataset.csv --output datasets
+python -m cudf.pandas featureselection.py --input attack1-XXXX/dataset.csv --output datasets
 ```
 
 Final optimized dataset will be saved as `all_datasets_rf.csv` in the `datasets` folder.
