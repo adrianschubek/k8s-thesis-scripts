@@ -240,4 +240,4 @@ Evaluation metrics are saved as `<model>_<normalization>.txt` in the `models` fo
 
 ---
 
-Tested and working on Ubuntu 24.04 LTS with 24 GB RAM + swap, RTX 3070 8GB (cuDF version only) and 5600X 6-core CPU.
+<!-- Tested and working on Ubuntu 24.04 LTS with 24 GB RAM + swap, RTX 3070 8GB (cuDF version only) and 5600X 6-core CPU. -->
