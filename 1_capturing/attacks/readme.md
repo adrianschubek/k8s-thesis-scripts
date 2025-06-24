@@ -11,6 +11,20 @@
 # Create new scenarios
 > Example scenario https://github.com/adrianschubek/k8s-thesis-scripts/tree/main/1_capturing/attacks/01
 
+## Guide
+
+1. Download `attacks.sh` from this repo to Desktop
+2. Run in host erminal
+```bash
+cd ~/Desktop && bash attacks.sh --config ~/Desktop/capture.env --scenarios_download --only 01 --prepare-only
+```
+3. **Wait** for the script to finish/exit.
+4. Connect to the master node and make changes
+5. After making changes, open virtual-machine-manager and **shutdown** all VMs
+6. **Wait** for the VMs to be fully shutdown.
+7. Open the `Snapshots` tab in each VM and create a new snapshot with a version number (e.g. `v2`). The version number MUST be higher than all previous snapshots.
+
+
 ## Scenario folder structure
 
 ```bash
