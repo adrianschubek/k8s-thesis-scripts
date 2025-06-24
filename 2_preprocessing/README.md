@@ -130,6 +130,8 @@ You can also use a full absolute path for both input and output folders.
 
 `<scenario>` is the name of the scenario, e.g. `attack0`
 
+> Note: There will be just a single folder with the name of the first scenario for everything. This is expected and the correct labels will be set later.
+
 `<node>` is the name of the node, e.g. `k8s-master-1`
 
 | File                                   | Description                                                                                   |
@@ -147,11 +149,13 @@ You can also use a full absolute path for both input and output folders.
 | \<scenario>/temp_s_prom.csv            | Prometheus data in seconds interval                                                           |
 | common_prom_metrics.csv                | Prometheus metrics that are common to all scenarios and which will be included in the dataset |
 | meta.csv                               | Metadata for each dataset (includes the dataset attack ID column mapping)                     |
-| all_datasets.csv                       | All datasets merged into one file                                                             |
+<!-- | all_datasets.csv                       | All datasets merged into one file                                                             | -->
 
 Process can be interrupted and resumed at any time. Temp files are cached and reused.
 
-### 5) Merge all scenario datasets
+### 5) 
+> Skipped
+<!-- ### 5) Merge all scenario datasets
 
 In datasets folder run:
 
@@ -175,7 +179,7 @@ echo "Merged CSV saved as merged_all_datasets.csv"
 
 After processing, the dataset files will be saved as `dataset.csv` in each scenario folder.
 
-`attack` column in the final dataset maps to `attack_id` in `meta.csv`. `attack` will always be `0` for normal behavior (when `attack` was set to `1`).
+`attack` column in the final dataset maps to `attack_id` in `meta.csv`. `attack` will always be `0` for normal behavior (when `attack` was set to `1`). -->
 
 ### 6) Feature Engineering
 
@@ -199,7 +203,7 @@ Intermediate files are saved as `all_datasets_*.csv` and `selected_columns_*.csv
 ### 6) Apply labels
 
 ```bash
-python -m cudf.pandas applylabelsv5.py --dataset datasets/attack1-2025-03-27_22-32-47/dataset.csv --timing raw_data/timing_1it.txt --resolution 10ms
+python -m cudf.pandas applylabelsv5.py --dataset datasets/attack1-XXXX/dataset.csv --timing raw_data/timing_1it.txt --resolution 10ms --between-as-benign true
 ```
 
 <!-- ```bash
