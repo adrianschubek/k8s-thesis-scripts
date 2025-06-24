@@ -16,6 +16,6 @@ https://github.com/adrianschubek/k8s-thesis-scripts/blob/main/1_capturing/attack
 ### How to preprocess the data into a dataset
 https://github.com/adrianschubek/k8s-thesis-scripts/blob/main/2_preprocessing/README.md
 
-### How to create/modify/delete scenarios
+### How to modify the cluster (create/modify/delete scenarios/pods...)
 https://github.com/adrianschubek/k8s-thesis-scripts/blob/main/1_capturing/attacks/readme.md
 
