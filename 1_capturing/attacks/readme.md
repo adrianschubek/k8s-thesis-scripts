@@ -67,7 +67,6 @@ ATTACK=1
 0. Download and move the `attacks.sh` and `run_attacker.sh` scripts to your Desktop from this repo
 1. Start new terminal and run on host pc:
 ```bash
-```bash
 cd ~/Desktop && bash attacks.sh --config ~/Desktop/capture.env --scenarios_download --only 01 --manual
 ```
 2. **wait** for ready then run in new terminal: (iteration = how many times each attack is run)
