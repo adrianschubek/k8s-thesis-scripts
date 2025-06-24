@@ -206,10 +206,10 @@ Intermediate files are saved as `all_datasets_*.csv` and `selected_columns_*.csv
 ### 6) Apply labels
 
 ```bash
-python -m cudf.pandas applylabelsv5.py --dataset datasets/attack1-XXXX/dataset.csv --timing raw_data/timing_1it.txt --resolution 1s --between-as-benign true
+python -m cudf.pandas applylabelsv5.py --dataset datasets/all_datasets_rf.csv --timing raw_data/timing_1it.txt --resolution 1s --between-as-benign true
 ```
 
-Replace `attack1-XXXX` with the actual folder name. Will create a new file `dataset_labeled.csv` in the same folder
+Replace `attack1-XXXX` with the actual folder name. Input is `datasets/all_datasets_rf.csv` from the previous step. Will create a new file `dataset_labeled.csv` in the same folder
 
 <!-- ```bash
 python -m cudf.pandas splitdataset.py --dataset local_datasets_v5it3ms10/attack1-2025-03-27_22-32-47/dataset_labeled.csv --output local_datasets_v5it3ms10 --split-by-benign true
