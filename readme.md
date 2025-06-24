@@ -10,7 +10,7 @@
 ### How to init the cluster or add new nodes
 https://github.com/adrianschubek/k8s-thesis-scripts/blob/main/1_capturing/readme.md
 
-## How to capture the data
+### How to capture the data
 https://github.com/adrianschubek/k8s-thesis-scripts/blob/main/1_capturing/attacks/readme.md#automated-attack-execution-and-capture
 
 ### How to preprocess the data into a dataset
