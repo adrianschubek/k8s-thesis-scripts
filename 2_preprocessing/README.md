@@ -66,6 +66,8 @@ And extract the `.7z` files in the `raw_data` folder.
 ```
 <!-- for file in *.7z; do 7z x "$file"; done -->
 
+Copy the `timing1it.txt` file from the host PC to the `raw_data` folder. 
+> This file contains precise timestamps for when each attack was executed. It is used to align all data sources to the same time axis.
 
 ### 4)
 
@@ -80,6 +82,7 @@ preprocessing/
 │   │   ├── k8s-master-1/...
 │   │   ├── ...
 │   ├── attack1/...
+|   ├── timing1it.txt
 │   ...
 ├── dataset.py
 ├── ...
@@ -193,17 +196,15 @@ A `all_datasets_rf.xlsx` file for debugging purposes in Excel will also be creat
 
 Intermediate files are saved as `all_datasets_*.csv` and `selected_columns_*.csv` in the same folder.
 
-### 6) Apply labels + split dataset
-
-Edit the `fixdataset.py` file as needed and run it to fix the dataset.
+### 6) Apply labels
 
 ```bash
-python -m cudf.pandas applylabelsv5.py --dataset local_datasets_v5it3ms10/attack1-2025-03-27_22-32-47/dataset.csv --timing raw_data_v5it3/timing_3it.txt --resolution 10ms
+python -m cudf.pandas applylabelsv5.py --dataset local_datasets_v5it3ms10/attack1-2025-03-27_22-32-47/dataset.csv --timing raw_data/timing_1it.txt --resolution 10ms
 ```
 
-```bash
+<!-- ```bash
 python -m cudf.pandas splitdataset.py --dataset local_datasets_v5it3ms10/attack1-2025-03-27_22-32-47/dataset_labeled.csv --output local_datasets_v5it3ms10 --split-by-benign true
-```
+``` -->
 
 ### 7) Advanced Network stats
 
