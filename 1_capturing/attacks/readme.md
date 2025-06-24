@@ -13,7 +13,7 @@
 
 ## Guide
 
-1. Download `attacks.sh` from this repo to Desktop
+1. Download all `*.sh` scripts to your Desktop from this repo
 2. Run in host terminal
 ```bash
 cd ~/Desktop && bash attacks.sh --config ~/Desktop/capture.env --scenarios_download --only 01 --prepare-only
@@ -77,7 +77,7 @@ ATTACK=1
 
 <!-- > If you dont want to execute the scripts from the server, you can just download them from this repo and replace the <(curl..)> part with `bash run_attacker.sh`... -->
 
-0. Download and move the `attacks.sh` and `run_attacker.sh` scripts to your Desktop from this repo
+0. Download all `*.sh` scripts to your Desktop from this repo
 1. Start new terminal and run on host pc:
 ```bash
 cd ~/Desktop && bash attacks.sh --config ~/Desktop/capture.env --scenarios_download --only 01 --manual
