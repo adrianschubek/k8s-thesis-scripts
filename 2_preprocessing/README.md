@@ -155,8 +155,6 @@ You can also use a full absolute path for both input and output folders.
 
 Process can be interrupted and resumed at any time. Temp files are cached and reused.
 
-### 5) 
-> Skipped
 <!-- ### 5) Merge all scenario datasets
 
 In datasets folder run:
@@ -189,7 +187,7 @@ After processing, the dataset files will be saved as `dataset.csv` in each scena
 > Remove `-m cudf.pandas` if you are not using cuDF.
 
 ```bash
-python -m cudf.pandas featureselection.py --input attack1-XXXX/dataset.csv --output datasets
+python -m cudf.pandas featureselection.py --input datasets/attack1-XXXX/dataset.csv --output datasets
 ```
 
 Final optimized dataset will be saved as `all_datasets_rf.csv` in the `datasets` folder.
