@@ -13,7 +13,7 @@
 ```bash
 <scenario_id>
    |--- run_host.sh (runs on the host PC/outside the cluster)
-   |--- capture.env (optional)
+   |--- capture.env (configuration for the scenario)
 ```
 
 ## Configuration
@@ -66,7 +66,7 @@ cd ~/Desktop && bash <(curl -fsSL https://k8s.adriansoftware.de/attacks/attacks.
 ```bash
 cd ~/Desktop && bash <(curl -fsSL https://k8s.adriansoftware.de/attacks/run_attacker.sh) --config ~/Desktop/capture.env --scenarios_download --iterations 1 --timing timing_1it.txt
 ```
-3. Start capturing by pressing any key on the first terminal (quickly after step 2)
+3. Start capturing by pressing any key on the first terminal (*immediately* after step 2)
 4. **wait** for step 2. to be completed
 
 
